@@ -11,7 +11,7 @@ import { FormInput } from '@/components/form-input';
 import { Button } from '@/components/ui/button';
 import { Field, FieldDescription, FieldGroup, FieldTitle } from '@/components/ui/field';
 import { useCooldownTimer } from '@/hooks/use-cooldown-timer';
-import { getErrorMessage } from '@/lib/utils';
+import { getErrorMessage } from '@/lib/error';
 import { BaseApiResponse } from '@/types';
 
 import {

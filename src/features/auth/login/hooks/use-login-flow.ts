@@ -5,7 +5,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
 import { DEFAULT_ROUTES_BY_ROLE } from '@/constants';
-import { getErrorMessage } from '@/lib/utils';
+import { getErrorMessage } from '@/lib/error';
 import { useAuthStore } from '@/stores/auth.store';
 
 import { LoginInput, loginSchema } from '../validators/auth.schema';

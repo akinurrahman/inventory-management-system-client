@@ -22,14 +22,18 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 import { useLogout } from '@/features/auth/login/hooks/use-auth';
-import { getErrorMessage, getInitials } from '@/lib/utils';
-import { useAuthStore } from '@/stores/auth.store';
+import { User } from '@/features/auth/login/types/auth.types';
+import { getErrorMessage } from '@/lib/error';
+import { getInitials } from '@/lib/format';
 
-export function NavUser() {
+interface props {
+  user: User | null;
+}
+
+export function NavUser({ user }: props) {
   const { isMobile } = useSidebar();
   const { setTheme, resolvedTheme } = useTheme();
 
-  const user = useAuthStore(s => s.user);
   const logoutMutation = useLogout();
 
   const handleThemeToggle = () => {

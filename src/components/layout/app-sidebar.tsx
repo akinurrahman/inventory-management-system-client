@@ -12,18 +12,20 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
+import { useAuthStore } from '@/stores/auth.store';
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const user = useAuthStore(s => s.user);
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <AppHeader />
+        <AppHeader user={user} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

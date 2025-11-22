@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { parseAsInteger, useQueryState } from 'nuqs';
 import { toast } from 'sonner';
 
-import { getErrorMessage } from '@/lib/utils';
+import { getErrorMessage } from '@/lib/error';
 
 import { useForgotPasswordStore } from '../store/store';
 import {

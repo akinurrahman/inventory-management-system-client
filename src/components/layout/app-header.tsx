@@ -4,8 +4,14 @@ import { Building } from 'lucide-react';
 
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
 import { APP_NAME } from '@/constants';
+import { User } from '@/features/auth/login/types/auth.types';
+import { formatRole } from '@/lib/format';
 
-export function AppHeader() {
+interface props {
+  user: User | null;
+}
+
+export function AppHeader({ user }: props) {
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -15,7 +21,7 @@ export function AppHeader() {
           </div>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-medium">{APP_NAME}</span>
-            <span className="truncate text-xs">super admin</span>
+            <span className="truncate text-xs">{formatRole(user?.role)}</span>
           </div>
         </SidebarMenuButton>
       </SidebarMenuItem>

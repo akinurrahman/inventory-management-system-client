@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BreadcrumpSetter from '@/components/utils/breadcrump-setter';
+import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 
 const AdminDashboard = () => {
   return (

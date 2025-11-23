@@ -16,9 +16,9 @@ interface Props {
 
 const ProductTable = ({ products, pagination, isPending }: Props) => {
   const user = useAuthStore(state => state.user);
-  const { onDelete } = useProductActions();
+  const { onDelete, onView } = useProductActions();
   const canDelete = user?.role === 'admin';
-  const columns = getProductColumns({ onDelete: canDelete ? onDelete : undefined });
+  const columns = getProductColumns({ onDelete: canDelete ? onDelete : undefined, onView });
 
   return (
     <DataTable data={products} columns={columns} pagination={pagination} isLoading={isPending} />

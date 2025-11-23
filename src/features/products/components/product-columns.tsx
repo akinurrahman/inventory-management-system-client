@@ -14,9 +14,10 @@ import ProductMetaCell from './product-meta-cell';
 
 interface Props {
   onDelete?: (product: Product) => void;
+  onView?: (product: Product) => void;
 }
 
-export const getProductColumns = ({ onDelete }: Props): ColumnDef<Product>[] => {
+export const getProductColumns = ({ onDelete, onView }: Props): ColumnDef<Product>[] => {
   return [
     {
       accessorKey: 'name',
@@ -99,7 +100,7 @@ export const getProductColumns = ({ onDelete }: Props): ColumnDef<Product>[] => 
       header: '',
       cell: ({ row }) => {
         const item = row.original;
-        return <ProductActionMenu onDelete={onDelete} product={item} />;
+        return <ProductActionMenu onDelete={onDelete} onView={onView} product={item} />;
       },
     },
   ];

@@ -15,10 +15,11 @@ import { Product } from '../types/product.types';
 
 interface Props {
   onDelete?: (product: Product) => void;
+  onView?: (product: Product) => void;
   product: Product;
 }
 
-const ProductActionMenu = ({ onDelete, product }: Props) => {
+const ProductActionMenu = ({ onDelete, onView, product }: Props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -35,7 +36,7 @@ const ProductActionMenu = ({ onDelete, product }: Props) => {
           </span>
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => onView?.(product)}>
           <span className="flex items-center gap-2">
             <Eye className="h-4 w-4 text-gray-600" />
             View Details

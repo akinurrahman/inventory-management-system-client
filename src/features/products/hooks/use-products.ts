@@ -14,10 +14,11 @@ export const useGetAllProducts = (props: FilterProps) => {
   });
 };
 
-export const useGetProductById = (productId: string) => {
+export const useGetProductById = (productId: string | undefined) => {
   return useQuery<ProductResponse>({
     queryKey: ['products', productId],
     queryFn: () => apiCall(`/products/${productId}`),
+    enabled: !!productId,
   });
 };
 

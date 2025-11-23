@@ -12,7 +12,7 @@ interface props {
 const ProductMetaCell = ({ product }: props) => {
   const discount = product.discount ?? 0;
   const tags = product.tags ?? [];
-  const suppliers = product.supplierIds?.length ?? 0;
+  const suppliers = product.suppliers?.length ?? 0;
   const description = product.description ?? '';
   return (
     <div className="flex min-w-[220px] items-start gap-3">

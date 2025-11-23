@@ -5,9 +5,9 @@ import React from 'react';
 import { Card, CardContent, CardHeader } from '@ui/card';
 import { BoxIcon } from 'lucide-react';
 
-import { SearchInput } from '@/components/utils';
-import BreadcrumpSetter from '@/components/utils/breadcrump-setter';
-import PageHeader from '@/components/utils/page-header';
+import { SearchInput } from '@/components/shared';
+import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
+import PageHeader from '@/components/shared/page-header';
 
 import ProductTable from '../components/product-table';
 import { useProductListQuery } from '../hooks/use-product-list-query';

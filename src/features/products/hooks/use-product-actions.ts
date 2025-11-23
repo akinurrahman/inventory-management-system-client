@@ -1,5 +1,8 @@
+import { useRouter } from 'next/navigation';
+
 import { toast } from 'sonner';
 
+import { getPrefixByRole } from '@/constants';
 import { useDeleteConfirmation } from '@/hooks/use-delete-confirmation';
 import { getErrorMessage } from '@/lib/error';
 
@@ -7,6 +10,8 @@ import { Product } from '../types/product.types';
 import { useDeleteProduct } from './use-products';
 
 export const useProductActions = () => {
+  const router = useRouter();
+  const prefix = getPrefixByRole();
   const deleteProduct = useDeleteProduct();
   const { confirmDelete } = useDeleteConfirmation<Product>({
     onDelete: async product => {
@@ -22,5 +27,9 @@ export const useProductActions = () => {
       `Are you sure you want to delete the product "${product.name}"? This action cannot be undone.`,
   });
 
-  return { onDelete: confirmDelete };
+  const handleView = (product: Product) => {
+    router.push(`${prefix}/products/${product._id}`);
+  };
+
+  return { onDelete: confirmDelete, onView: handleView };
 };

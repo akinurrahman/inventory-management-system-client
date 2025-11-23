@@ -17,16 +17,13 @@ export const useDebouncedSearch = ({
   const searchParams = useSearchParams();
   const [search, setSearch] = useState('');
 
-  // Stable string snapshot of the URL params
-  const paramsString = searchParams.toString();
-
   const debouncedUrlUpdate = useMemo(() => {
     return (value: string) => {
-      debouncedSearch((searchValue: string) => {
-        const params = new URLSearchParams(paramsString);
+      debouncedSearch((finalValue: string) => {
+        const params = new URLSearchParams(window.location.search);
 
-        if (searchValue.trim()) {
-          params.set(searchParam, searchValue);
+        if (finalValue.trim()) {
+          params.set(searchParam, finalValue);
         } else {
           params.delete(searchParam);
         }
@@ -34,17 +31,13 @@ export const useDebouncedSearch = ({
         router.replace(`?${params.toString()}`, { scroll: false });
       }, value);
     };
-  }, [paramsString, searchParam, router]);
+  }, [searchParam, router]);
 
-  // Sync local state with URL (correct, stable)
+  // Sync local state from URL param
   useEffect(() => {
-    const params = new URLSearchParams(paramsString);
-    const queryVal = params.get(searchParam) || '';
-
-    if (queryVal !== search) {
-      setSearch(queryVal);
-    }
-  }, [paramsString, searchParam, search]);
+    const queryValue = searchParams.get(searchParam) || '';
+    setSearch(queryValue);
+  }, [searchParams, searchParam]);
 
   const handleSearchChange = useCallback(
     (value: string) => {

@@ -42,7 +42,7 @@ export interface FileUploadProps extends BaseFieldProps {
   fieldType: 'file';
   accept?: string;
   FileDescription?: string;
-  variant: 'v1' | 'v2' | 'v3';
+  variant: 'multiple';
   multiple?: boolean;
 }
 export interface CheckBoxProps extends BaseFieldProps {

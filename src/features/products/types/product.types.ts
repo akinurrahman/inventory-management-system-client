@@ -1,4 +1,4 @@
-import { Supplier } from '@/features/staff/types/staff.types';
+import { Supplier } from '@/features/supplier/types/supplier.types';
 import { BaseApiResponse, BaseEntity } from '@/types';
 
 export type Product = BaseEntity & {

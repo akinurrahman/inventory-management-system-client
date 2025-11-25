@@ -20,6 +20,7 @@ const MultiFileUploader = ({ props }: FileUploadProp) => {
     multiple: props.multiple,
   });
   const acceptedFormats = getAcceptedFormats(props.accept || '*');
+
   return (
     <div className="grid gap-6">
       <div className="grid gap-3">

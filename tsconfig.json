@@ -30,7 +30,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "mocks/handlers/users.handlers.js",
-    "scripts/create-feature.mjs"
+    "scripts/create-feature.mjs",
+    "src/features/products/components/product-form/index.ts"
   ],
   "exclude": ["node_modules"]
 }

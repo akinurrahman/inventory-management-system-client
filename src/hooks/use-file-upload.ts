@@ -65,9 +65,8 @@ const uploadToCloud = async (files: File[]) => {
 
     files.forEach(file => formData.append('files', file));
 
-    const response = await apiCall('/files', formData, 'POST');
-
-    return response.data.data; // array of URLs
+    const response = await apiCall('/upload/files', formData, 'POST');
+    return response.data; // array of URLs
   } catch (error) {
     toast.error(getErrorMessage(error));
     return null;

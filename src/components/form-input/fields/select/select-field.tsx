@@ -4,7 +4,7 @@ import { FormControl } from '@ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@ui/select';
 import { ControllerRenderProps } from 'react-hook-form';
 
-import type { SelectFieldProps } from '../types';
+import type { SelectFieldProps } from '../../types';
 
 interface SelectProps {
   props: SelectFieldProps;

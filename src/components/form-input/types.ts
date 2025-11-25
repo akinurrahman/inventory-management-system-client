@@ -24,12 +24,18 @@ export interface TextareaFieldProps extends BaseFieldProps {
 interface Select {
   label: string;
   value: string;
+  icon?: React.ComponentType<{ className?: string }>;
 }
 
 export interface SelectFieldProps extends BaseFieldProps {
   fieldType: 'select';
+  variant?: 'default' | 'multi-selector';
   options: Select[];
+  maxCount?: number;
+  modalPopover?: boolean;
+  asChild?: boolean;
 }
+
 export interface SliderFieldProps extends BaseFieldProps {
   fieldType: 'slider';
   sliderLabel: string;

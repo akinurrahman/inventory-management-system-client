@@ -8,16 +8,17 @@ import { Badge } from '@ui/badge';
 import { formatCurrency } from '@/lib/format';
 import { cn } from '@/lib/utils';
 
-import { Product } from '../types/product.types';
+import { Product } from '../../types/product.types';
 import ProductActionMenu from './product-action-menu';
 import ProductMetaCell from './product-meta-cell';
 
 interface Props {
   onDelete?: (product: Product) => void;
   onView?: (product: Product) => void;
+  onEdit?: (product: Product) => void;
 }
 
-export const getProductColumns = ({ onDelete, onView }: Props): ColumnDef<Product>[] => {
+export const getProductColumns = ({ onDelete, onView, onEdit }: Props): ColumnDef<Product>[] => {
   return [
     {
       accessorKey: 'name',
@@ -100,7 +101,9 @@ export const getProductColumns = ({ onDelete, onView }: Props): ColumnDef<Produc
       header: '',
       cell: ({ row }) => {
         const item = row.original;
-        return <ProductActionMenu onDelete={onDelete} onView={onView} product={item} />;
+        return (
+          <ProductActionMenu onDelete={onDelete} onView={onView} onEdit={onEdit} product={item} />
+        );
       },
     },
   ];

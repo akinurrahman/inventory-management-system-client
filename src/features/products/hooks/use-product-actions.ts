@@ -31,5 +31,9 @@ export const useProductActions = () => {
     router.push(`${prefix}/products/${product._id}`);
   };
 
-  return { onDelete: confirmDelete, onView: handleView };
+  const handleEdit = (product: Product) => {
+    router.push(`${prefix}/products/${product._id}/edit`);
+  };
+
+  return { onDelete: confirmDelete, onView: handleView, onEdit: handleEdit };
 };

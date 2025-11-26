@@ -8,9 +8,9 @@ import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 import { getPrefixByRole } from '@/constants';
 import { getParam } from '@/lib/utils';
 
-import ProductDetailsSkeleton from '../components/product-detail-skeleton';
-import ProductDetails from '../components/product-details';
-import ProductNotFound from '../components/product-not-found';
+import ProductDetailsSkeleton from '../components/product-details/product-detail-skeleton';
+import ProductDetails from '../components/product-details/product-details';
+import ProductNotFound from '../components/product-details/product-not-found';
 import { useGetProductById } from '../hooks/use-products';
 
 const ProductDetailPage = () => {

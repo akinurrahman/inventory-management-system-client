@@ -4,7 +4,7 @@ import { Badge } from '@ui/badge';
 
 import { truncateText } from '@/lib/text';
 
-import { Product } from '../types/product.types';
+import { Product } from '../../types/product.types';
 
 interface props {
   product: Product;

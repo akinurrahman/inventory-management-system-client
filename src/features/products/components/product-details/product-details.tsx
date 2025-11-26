@@ -8,7 +8,7 @@ import { ImageGallery } from '@/components/shared';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
-import { Product } from '../types/product.types';
+import { Product } from '../../types/product.types';
 import { SupplierCard } from './supplier-card';
 
 interface Props {

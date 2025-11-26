@@ -11,15 +11,16 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-import { Product } from '../types/product.types';
+import { Product } from '../../types/product.types';
 
 interface Props {
   onDelete?: (product: Product) => void;
   onView?: (product: Product) => void;
   product: Product;
+  onEdit?: (product: Product) => void;
 }
 
-const ProductActionMenu = ({ onDelete, onView, product }: Props) => {
+const ProductActionMenu = ({ onDelete, onView, onEdit, product }: Props) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -29,12 +30,14 @@ const ProductActionMenu = ({ onDelete, onView, product }: Props) => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-40">
-        <DropdownMenuItem>
-          <span className="flex items-center gap-2">
-            <Pencil className="h-4 w-4 text-blue-500" />
-            Edit
-          </span>
-        </DropdownMenuItem>
+        {onEdit && (
+          <DropdownMenuItem onClick={() => onEdit?.(product)}>
+            <span className="flex items-center gap-2">
+              <Pencil className="h-4 w-4 text-blue-500" />
+              Edit
+            </span>
+          </DropdownMenuItem>
+        )}
 
         <DropdownMenuItem onClick={() => onView?.(product)}>
           <span className="flex items-center gap-2">

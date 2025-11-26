@@ -45,7 +45,26 @@ export const useCreateProduct = () => {
   });
 };
 
-export const useUpdateProduct = () => {};
+export const useUpdateProduct = () => {
+  const queryClient = useQueryClient();
+  return useMutation<unknown, unknown, { productId: string | undefined; data: ProductInput }>({
+    mutationFn: ({ productId, data }) => {
+      if (!productId) throw new Error('Product ID is required');
+      const payload = {
+        ...data,
+        files: data.files.map(f => f.url),
+      };
+      return apiCall(`/products/${productId}`, payload, 'PATCH');
+    },
+    onSuccess: () => {
+      toast.success('Product updated successfully');
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+    },
+    onError: error => {
+      toast.error(getErrorMessage(error));
+    },
+  });
+};
 
 export const useDeleteProduct = () => {
   const queryClient = useQueryClient();

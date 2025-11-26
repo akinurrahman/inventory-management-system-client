@@ -11,8 +11,8 @@ import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 import PageHeader from '@/components/shared/page-header';
 import { getPrefixByRole } from '@/constants';
 
-import ProductTable from '../components/product-table';
-import ProductToolbar from '../components/products-toolbar';
+import ProductTable from '../components/product-table/product-table';
+import ProductToolbar from '../components/product-table/products-toolbar';
 import { useProductListQuery } from '../hooks/use-product-list-query';
 
 const ProductsPage = () => {

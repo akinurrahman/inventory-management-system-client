@@ -11,6 +11,23 @@ export type BaseEntity = {
   updatedAt: string;
 };
 
+export type ApprovalUser = {
+  _id: string;
+  fullName: string;
+  email: string;
+};
+
+export type BaseApprovalEntity<TPayload> = BaseEntity & {
+  entityType: 'Product';
+  entityId: string | null;
+  action: 'create' | 'update' | 'delete';
+  payload: TPayload;
+  status: 'pending' | 'approved' | 'rejected';
+  reason: string | null;
+  requestedBy: ApprovalUser;
+  processedBy: ApprovalUser | null;
+};
+
 export type Pagination = {
   page: number;
   limit: number;

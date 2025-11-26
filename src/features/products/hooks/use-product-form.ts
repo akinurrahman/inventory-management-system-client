@@ -20,7 +20,7 @@ const defaultValues = {
   supplierIds: [],
 };
 
-export const useProductForm = (product: Product | undefined) => {
+export const useProductForm = (product?: Product | undefined) => {
   const form = useForm<ProductInput>({
     defaultValues,
     resolver: zodResolver(productSchema),

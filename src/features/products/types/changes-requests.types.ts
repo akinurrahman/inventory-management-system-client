@@ -5,3 +5,4 @@ import { Product } from './product.types';
 export type ProductChangesRequest = BaseApprovalEntity<Partial<Product>>;
 
 export type ProductChagesRequestsResponse = BaseApiResponse<ProductChangesRequest[]>;
+export type ProductChagesRequestResponse = BaseApiResponse<ProductChangesRequest>;

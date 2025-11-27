@@ -1,10 +1,17 @@
+import Link from 'next/link';
+
 import { ColumnDef } from '@tanstack/react-table';
 import { Badge } from '@ui/badge';
+import { Button } from '@ui/button';
 import { format } from 'date-fns';
+
+import { getPrefixByRole } from '@/constants';
 
 import { ProductChangesRequest } from '../../types/changes-requests.types';
 
 export const getProductChangesRequestColumns = (): ColumnDef<ProductChangesRequest>[] => {
+  const prefix = getPrefixByRole();
+
   return [
     {
       accessorKey: 'requestedBy.fullName',
@@ -49,6 +56,20 @@ export const getProductChangesRequestColumns = (): ColumnDef<ProductChangesReque
       cell: ({ row }) => (
         <div title={row.original?.reason || '—'}>{row.original.reason || '—'}</div>
       ),
+    },
+    {
+      id: 'actions',
+      header: 'Actions',
+      cell: ({ row }) => {
+        const request = row.original;
+        return (
+          <Link href={`${prefix}/products/changes-requests/${request._id}`}>
+            <Button variant="outline" size="sm">
+              View Changes
+            </Button>
+          </Link>
+        );
+      },
     },
   ];
 };

@@ -9,8 +9,8 @@ import { BoxIcon } from 'lucide-react';
 
 import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 import PageHeader from '@/components/shared/page-header';
-import { getPrefixByRole } from '@/constants';
 import { useGetSuppliers } from '@/features/supplier/hooks/use-supplier';
+import { getPrefixByRole } from '@/lib/role-utils';
 
 import ProductForm from '../components/product-form';
 import { STATUS_OPTIONS, categoryOptions } from '../constants/product.constants';

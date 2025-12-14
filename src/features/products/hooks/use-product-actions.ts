@@ -2,9 +2,9 @@ import { useRouter } from 'next/navigation';
 
 import { toast } from 'sonner';
 
-import { getPrefixByRole } from '@/constants';
 import { useDeleteConfirmation } from '@/hooks/use-delete-confirmation';
 import { getErrorMessage } from '@/lib/error';
+import { getPrefixByRole } from '@/lib/role-utils';
 
 import { Product } from '../types/product.types';
 import { useDeleteProduct } from './use-products';

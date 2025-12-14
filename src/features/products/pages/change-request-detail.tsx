@@ -10,8 +10,8 @@ import { ChevronLeft } from 'lucide-react';
 
 import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { getPrefixByRole } from '@/constants';
 import { formatDate } from '@/lib/format';
+import { getPrefixByRole } from '@/lib/role-utils';
 import { getParam } from '@/lib/utils';
 
 import ProductDetailsView from '../components/changes-requests/product-details-view';

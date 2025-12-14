@@ -11,5 +11,10 @@ export const adminSidebar = () => {
         { title: 'Changes Request', url: `${prefix}/products/changes-requests` },
       ],
     },
+    {
+      title: 'User Management',
+      url: `${prefix}/user-management`,
+      icon: 'UserIcon',
+    },
   ];
 };

@@ -9,7 +9,7 @@ import { BoxIcon } from 'lucide-react';
 
 import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 import PageHeader from '@/components/shared/page-header';
-import { getPrefixByRole } from '@/constants';
+import { getPrefixByRole } from '@/lib/role-utils';
 
 import ProductTable from '../components/product-table/product-table';
 import ProductToolbar from '../components/product-table/products-toolbar';

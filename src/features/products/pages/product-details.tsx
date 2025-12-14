@@ -5,7 +5,7 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 
 import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
-import { getPrefixByRole } from '@/constants';
+import { getPrefixByRole } from '@/lib/role-utils';
 import { getParam } from '@/lib/utils';
 
 import ProductDetailsSkeleton from '../components/product-details/product-detail-skeleton';

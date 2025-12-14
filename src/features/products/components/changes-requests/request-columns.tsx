@@ -5,7 +5,7 @@ import { Badge } from '@ui/badge';
 import { Button } from '@ui/button';
 import { format } from 'date-fns';
 
-import { getPrefixByRole } from '@/constants';
+import { getPrefixByRole } from '@/lib/role-utils';
 
 import { ProductChangesRequest } from '../../types/changes-requests.types';
 

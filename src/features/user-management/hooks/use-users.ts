@@ -7,6 +7,7 @@ import { buildQuery } from '@/lib/utils';
 import { FilterProps } from '@/types';
 
 import { UserResponse } from '../types/user.types';
+import { UserFormData } from '../validators/user.schema';
 
 export const useGetUsers = (props: FilterProps & { role?: string }) => {
   const query = buildQuery(props);
@@ -27,6 +28,36 @@ export const useDeleteUser = () => {
       toast.success('User deleted successfully');
     },
     onError: error => {
+      toast.error(getErrorMessage(error));
+    },
+  });
+};
+
+export const useCreateUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<void, unknown, UserFormData>({
+    mutationFn: data => apiCall('/users', data, 'POST'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      toast.success('User created successfully');
+    },
+    onError: (error: unknown) => {
+      toast.error(getErrorMessage(error));
+    },
+  });
+};
+
+export const useUpdateUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<void, unknown, { data: UserFormData; id: string }>({
+    mutationFn: ({ data, id }) => apiCall(`/users/${id}`, data, 'PATCH'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      toast.success('User updated successfully');
+    },
+    onError: (error: unknown) => {
       toast.error(getErrorMessage(error));
     },
   });

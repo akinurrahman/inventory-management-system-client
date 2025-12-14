@@ -5,6 +5,10 @@ export enum USER_ROLE {
   OPERATOR = 'operator',
 }
 
+export const NON_ADMIN_ROLES = Object.values(USER_ROLE).filter(
+  role => role !== USER_ROLE.ADMIN
+) as [string, ...string[]];
+
 export type User = BaseEntity & {
   fullName: string;
   email: string;

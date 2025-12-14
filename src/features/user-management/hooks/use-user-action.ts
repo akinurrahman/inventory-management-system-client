@@ -3,12 +3,12 @@ import { useDeleteConfirmation } from '@/hooks/use-delete-confirmation';
 
 import { useDeleteUser } from './use-users';
 
-export const useProductActions = () => {
-  const deleteProduct = useDeleteUser();
+export const useUserActions = () => {
+  const deleteUser = useDeleteUser();
 
   const { confirmDelete } = useDeleteConfirmation<User>({
     onDelete: async user => {
-      return deleteProduct.mutateAsync(user._id);
+      return deleteUser.mutateAsync(user._id);
     },
     title: 'Delete User',
     description: user =>

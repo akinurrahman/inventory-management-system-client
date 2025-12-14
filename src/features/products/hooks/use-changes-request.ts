@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { toast } from 'sonner';
 
 import { apiCall } from '@/lib/api/api-call';
+import { getErrorMessage } from '@/lib/error';
 import { buildQuery } from '@/lib/utils';
 import { FilterProps } from '@/types';
 
@@ -25,4 +27,18 @@ export const useGetProductChangesRequestById = (id: string) => {
   });
 };
 
-export const useProductChangesAction = () => {};
+export const useProductChangesAction = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<unknown, unknown, { requestId: string; data: unknown }>({
+    mutationFn: ({ requestId, data }) =>
+      apiCall(`/approval-requests/${requestId}/action`, data, 'POST'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['product-changes-requests'] });
+      queryClient.invalidateQueries({ queryKey: ['product-changes-request'] });
+    },
+    onError: error => {
+      toast.error(getErrorMessage(error));
+    },
+  });
+};

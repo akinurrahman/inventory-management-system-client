@@ -8,7 +8,7 @@ import { FilterProps } from '@/types';
 
 import { UserResponse } from '../types/user.types';
 
-export const useGetUsers = (props: FilterProps) => {
+export const useGetUsers = (props: FilterProps & { role?: string }) => {
   const query = buildQuery(props);
 
   return useQuery<UserResponse>({

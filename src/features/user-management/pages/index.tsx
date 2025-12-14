@@ -9,6 +9,7 @@ import BreadcrumpSetter from '@/components/shared/breadcrump-setter';
 import PageHeader from '@/components/shared/page-header';
 
 import UsersTable from '../components/user-table';
+import UsersToolbar from '../components/users-toolbar';
 import { useUserQuery } from '../hooks/use-user-query';
 
 const UserManagementPage = () => {
@@ -23,7 +24,8 @@ const UserManagementPage = () => {
           icon={<UserCircle2 />}
         />
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-4">
+        <UsersToolbar />
         <UsersTable users={users} isPending={isPending} pagination={pagination} />
       </CardContent>
     </Card>

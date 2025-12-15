@@ -62,3 +62,33 @@ export const useUpdateUser = () => {
     },
   });
 };
+
+export const useBlockUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<void, unknown, string>({
+    mutationFn: (userId: string) => apiCall(`/users/${userId}/block`, undefined, 'PATCH'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      toast.success('User blocked successfully');
+    },
+    onError: error => {
+      toast.error(getErrorMessage(error));
+    },
+  });
+};
+
+export const useUnblockUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<void, unknown, string>({
+    mutationFn: (userId: string) => apiCall(`/users/${userId}/unblock`, undefined, 'PATCH'),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['users'] });
+      toast.success('User unblocked successfully');
+    },
+    onError: error => {
+      toast.error(getErrorMessage(error));
+    },
+  });
+};

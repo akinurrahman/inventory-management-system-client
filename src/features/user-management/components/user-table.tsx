@@ -15,8 +15,8 @@ interface UserProps {
 }
 
 const UsersTable = ({ users, isPending, pagination, onEdit }: UserProps) => {
-  const { onDelete } = useUserActions();
-  const columns = getUserColumns({ onDelete, onEdit });
+  const { onDelete, onBlock, onUnblock } = useUserActions();
+  const columns = getUserColumns({ onDelete, onEdit, onBlock, onUnblock });
   return <DataTable data={users} columns={columns} isLoading={isPending} pagination={pagination} />;
 };
 

@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@ui/dropdown-menu';
-import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
+import { Lock, MoreHorizontal, Pencil, Trash2, Unlock } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { User } from '@/features/auth/login/types/auth.types';
@@ -16,9 +16,16 @@ import { formatDate } from '@/lib/format';
 interface TableProps {
   onDelete: (user: User) => void;
   onEdit: (user: User) => void;
+  onBlock: (user: User) => void;
+  onUnblock: (user: User) => void;
 }
 
-export const getUserColumns = ({ onDelete, onEdit }: TableProps): ColumnDef<User>[] => {
+export const getUserColumns = ({
+  onDelete,
+  onEdit,
+  onBlock,
+  onUnblock,
+}: TableProps): ColumnDef<User>[] => {
   return [
     {
       header: '#',
@@ -69,10 +76,24 @@ export const getUserColumns = ({ onDelete, onEdit }: TableProps): ColumnDef<User
             <DropdownMenuContent align="end" className="w-40">
               {onEdit && (
                 <DropdownMenuItem onClick={() => onEdit?.(row.original)} className="cursor-pointer">
-                  <span className="flex items-center gap-2">
-                    <Pencil className="h-4 w-4 text-blue-500" />
-                    Edit
-                  </span>
+                  <Pencil className="h-4 w-4" /> Edit
+                </DropdownMenuItem>
+              )}
+
+              {row.original.isActive && (
+                <DropdownMenuItem
+                  onClick={() => onBlock?.(row.original)}
+                  className="cursor-pointer"
+                >
+                  <Lock className="h-4 w-4" /> Block
+                </DropdownMenuItem>
+              )}
+              {!row.original.isActive && (
+                <DropdownMenuItem
+                  onClick={() => onUnblock?.(row.original)}
+                  className="cursor-pointer"
+                >
+                  <Unlock className="h-4 w-4" /> Unblock
                 </DropdownMenuItem>
               )}
 
@@ -83,10 +104,7 @@ export const getUserColumns = ({ onDelete, onEdit }: TableProps): ColumnDef<User
                   onClick={() => onDelete?.(row.original)}
                   className="cursor-pointer text-red-600 focus:text-red-600"
                 >
-                  <span className="flex items-center gap-2">
-                    <Trash2 className="h-4 w-4 text-red-600" />
-                    Delete
-                  </span>
+                  <Trash2 className="h-4 w-4 text-red-600 focus:text-red-600" /> Delete Delete
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>

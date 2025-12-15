@@ -16,11 +16,10 @@ import { PlusIcon } from 'lucide-react';
 import { useQueryState } from 'nuqs';
 
 import { SearchInput } from '@/components/shared';
-import { USER_ROLE } from '@/features/auth/login/types/auth.types';
 import { User } from '@/features/auth/login/types/auth.types';
 
 const UsersToolbar = ({ openModal }: { openModal: (user?: User) => void }) => {
-  const [role, setRole] = useQueryState('role');
+  const [isActive, setIsActive] = useQueryState('isActive');
 
   return (
     <div className="flex items-center justify-between">
@@ -28,12 +27,12 @@ const UsersToolbar = ({ openModal }: { openModal: (user?: User) => void }) => {
         <SearchInput className="max-w-xs" />
 
         <Select
-          value={role ?? 'all'}
+          value={isActive ?? 'all'}
           onValueChange={value => {
             if (value === 'all') {
-              setRole(null); // removes from query params
+              setIsActive(null); // removes from query params
             } else {
-              setRole(value);
+              setIsActive(value);
             }
           }}
         >
@@ -43,15 +42,11 @@ const UsersToolbar = ({ openModal }: { openModal: (user?: User) => void }) => {
 
           <SelectContent>
             <SelectGroup>
-              <SelectLabel>Role</SelectLabel>
+              <SelectLabel></SelectLabel>
 
               <SelectItem value="all">All</SelectItem>
-
-              {Object.values(USER_ROLE).map(role => (
-                <SelectItem key={role} value={role}>
-                  {role.charAt(0).toUpperCase() + role.slice(1)}
-                </SelectItem>
-              ))}
+              <SelectItem value={'true'}>Active</SelectItem>
+              <SelectItem value={'false'}>Inactive</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>

@@ -9,7 +9,7 @@ import { FilterProps } from '@/types';
 import { UserResponse } from '../types/user.types';
 import { UserFormData } from '../validators/user.schema';
 
-export const useGetUsers = (props: FilterProps & { role?: string }) => {
+export const useGetUsers = (props: FilterProps & { isActive?: string }) => {
   const query = buildQuery(props);
 
   return useQuery<UserResponse>({

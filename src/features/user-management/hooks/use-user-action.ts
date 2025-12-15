@@ -15,5 +15,5 @@ export const useUserActions = () => {
       `Are you sure you want to delete the user "${user.fullName}"? This action cannot be undone.`,
   });
 
-  return { onDelete: confirmDelete, onEdit: () => {} };
+  return { onDelete: confirmDelete };
 };

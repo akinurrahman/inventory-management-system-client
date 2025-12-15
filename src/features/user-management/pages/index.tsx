@@ -30,7 +30,12 @@ const UserManagementPage = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <UsersToolbar openModal={userModal.openModal} />
-        <UsersTable users={users} isPending={isPending} pagination={pagination} />
+        <UsersTable
+          users={users}
+          isPending={isPending}
+          pagination={pagination}
+          onEdit={userModal.openModal}
+        />
       </CardContent>
 
       <UserModal

@@ -11,10 +11,11 @@ interface UserProps {
   users: User[];
   isPending: boolean;
   pagination: Pagination | undefined;
+  onEdit: (user: User) => void;
 }
 
-const UsersTable = ({ users, isPending, pagination }: UserProps) => {
-  const { onDelete, onEdit } = useUserActions();
+const UsersTable = ({ users, isPending, pagination, onEdit }: UserProps) => {
+  const { onDelete } = useUserActions();
   const columns = getUserColumns({ onDelete, onEdit });
   return <DataTable data={users} columns={columns} isLoading={isPending} pagination={pagination} />;
 };
